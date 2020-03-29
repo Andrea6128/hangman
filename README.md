@@ -2,8 +2,8 @@
 simple game of hangman for terminal
 
 ## requirements
-python 3.6+
-hangman.py and data.py in the same dir
+- python 3.6+
+- hangman.py and data.py in the same dir
 
 ## run
-python hangman.py
+python3 hangman.py
