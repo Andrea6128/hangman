@@ -2,14 +2,14 @@
 # (c) 03/2020
 
 from random import randint
-from data import hangman, words
+from data import hangman, words, title_ascii, win_ascii, game_over_ascii
 
 
-print()
-print("*" * 17)
-print("* H A N G M A N *")
-print("*" * 17)
+# print title ascii label
+for line in range(len(title_ascii)):
+    print(title_ascii[line][0])
 
+# set variables
 random_word = words[randint(0, len(words) - 1)]
 level = 1
 old_answer = "-"
@@ -28,7 +28,12 @@ while level < 13:
         random_word_list = list(random_word)
 
         # user input
-        answer = input(f"\n [{level}] Guess a letter: ")
+        answer = input(f"\n.: Round {level} :: Guess a letter (a-z): ")
+
+        # check for allowed chars
+        if answer < "a" or answer > "z" or len(answer) > 1:
+            print("\nWrong input! Enter single small letters only.")
+            break
 
         # check for repeated answer
         if answer not in letters_tried_twice:
@@ -66,8 +71,13 @@ while level < 13:
 
         # win
         if len(guessed) == len(random_word):
-            print("*** YOU WON! ***")
+            for line in range(len(win_ascii)):
+                print(win_ascii[line][0])
+
             level = 13
         break
 
-print("\nGAME OVER\n")
+# game over
+for line in range(len(win_ascii)):
+    print(game_over_ascii[line][0])
+print()
